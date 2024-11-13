@@ -1,0 +1,16 @@
+header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(128, 192, 247);
+}
+
+header > h3 {
+    flex: 0 0 60%;
+}
+
+header > ul {
+    display: flex;
+    flex: 0 0 40%;
+    justify-content: space-between;
+}
