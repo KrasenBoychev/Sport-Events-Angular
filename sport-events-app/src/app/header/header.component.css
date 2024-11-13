@@ -2,7 +2,8 @@ header {
     display: flex;
     align-items: center;
     padding: 20px;
-    background-color: rgb(128, 192, 247);
+    color: #fff;
+    background-color:#22371d;
 }
 
 header > h3 {
