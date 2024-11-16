@@ -1,15 +1,12 @@
 .app-container {
+    margin: auto;
     min-height: 100vh;
     max-width: 1920px;
     display: flex;
     flex-direction: column;
 }
 
-app-main {
+main {
     flex-grow: 1;
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
 }
-
-
-
