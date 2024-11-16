@@ -19,3 +19,8 @@ header > ul {
     flex: 0 0 40%;
     justify-content: space-between;
 }
+
+header a:hover {
+    cursor: pointer;
+    color: antiquewhite;
+}
