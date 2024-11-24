@@ -1,0 +1,26 @@
+header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: #fff;
+    background-color:#22371d;
+}
+
+header > h3 {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem;
+    flex: 0 0 60%;
+}
+
+header > ul {
+    display: flex;
+    flex: 0 0 40%;
+    justify-content: space-between;
+}
+
+header a:hover {
+    cursor: pointer;
+    color: antiquewhite;
+}
