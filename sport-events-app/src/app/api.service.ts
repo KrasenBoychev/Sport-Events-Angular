@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.development';
-import { Light } from './types/light';
+// import { Light } from './types/light';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,6 @@ export class ApiService {
     //   url += `?limit=${limit}`;
     // }
 
-    return this.http.get<Light[]>(url);
+    // return this.http.get<Light[]>(url);
   }
 }
