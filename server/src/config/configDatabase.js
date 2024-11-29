@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 function connectDatabase() {
   mongoose
     .connect('mongodb://localhost:27017/', {
-      dbName: 'lights-store'
+      dbName: 'sport-events'
     })
     // eslint-disable-next-line no-unused-vars
     .then((res) => {
