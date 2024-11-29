@@ -1,4 +1,4 @@
-const { Light } = require('../models/Light');
+const { Light } = require('../models/Event');
 const { User } = require('../models/User');
 
 async function getUserCartLights(lightsId) {

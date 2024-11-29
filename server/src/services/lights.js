@@ -1,5 +1,5 @@
 //const { adminId } = require('../../../client/api/requester');
-const { Light } = require('../models/Light');
+const { Light } = require('../models/Event');
 
 async function getAll() {
   return Light.find().lean();
