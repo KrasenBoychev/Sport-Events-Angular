@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
-import { MainComponent } from './main/main.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @Component({
@@ -17,4 +16,4 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent {};
