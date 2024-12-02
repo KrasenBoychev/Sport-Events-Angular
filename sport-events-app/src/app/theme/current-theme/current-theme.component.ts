@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
-import { Theme } from '../../types/theme';
+// import { Theme } from '../../types/event';
 import { UserService } from '../../user/user.service';
 import { HomeComponent } from '../../home/home.component';
 
@@ -13,7 +13,7 @@ import { HomeComponent } from '../../home/home.component';
   styleUrl: './current-theme.component.css',
 })
 export class CurrentThemeComponent implements OnInit {
-  theme = {} as Theme;
+  // theme = {} as Theme;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,8 +32,8 @@ export class CurrentThemeComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.params['themeId'];
 
-    this.apiService.getSingleTheme(id).subscribe((theme) => {
-      this.theme = theme;
-    });
+    // this.apiService.getSingleTheme(id).subscribe((theme) => {
+    //   this.theme = theme;
+    // });
   }
 }
