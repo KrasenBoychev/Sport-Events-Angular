@@ -1,95 +1,170 @@
+/*
+*Removes all default whitespace
+*/
+
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+/*
+*Reset CSS model sizing calculations
+*/
+
+html {
+  box-sizing: border-box;
 }
 
-ul {
-    list-style-type: none;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-app-home-page, app-login-page, app-register-page, app-event-details-page, app-error-page {
-    flex-grow: 1;
-    min-height: 100%;
+html {
+  font: 18px/1.5 Verdana, sans-serif;
 }
 
-app-login-page, app-register-page, app-event-details-page {
-    padding: 20px 0;
+body,
+form,
+input,
+textarea,
+option,
+select,
+button {
+  font: inherit;
 }
 
-.login-register-page-containter {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+ul,
+ol {
+  padding-bottom: 1.5em;
 }
 
-.login-register-form {
-    font-size: 1.2rem;
-    padding: 50px;
-    color: #FFF;
-    background-color: #968888;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+ul,
+ol {
+  padding-left: 2.5em;
 }
 
-.login-register-form > h2 {
-    margin-bottom: 20px;
-    text-align: center;
-    text-transform: uppercase;
+blockquote,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Georgia, serif;
 }
 
-.login-register-label-input {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-bottom: 0.5rem;
+  padding-top: 1.5rem;
+  font-weight: normal;
 }
 
-.login-register-label-input > input {
-    width: 250px;
-    padding: 2px;
+h1 {
+  font-size: 2.6em;
 }
 
-.login-register-form > button {
-    width: 50%;
-    align-self: center;
-    margin-top: 10px;
-    padding: 10px;
-    text-transform: uppercase;
-    color: #FFF;
-    background-color: #22371d;
-    border: none;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+h2 {
+  font-size: 2em;
 }
 
-.login-register-form > button:hover {
-    cursor: pointer;
-    color: #22371d;
-    background-color: #FFF;
-    border: none;
+h3 {
+  font-size: 1.6em;
 }
 
-.link-to-login-register {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    text-align: center;
+h4 {
+  font-size: 1.4em;
 }
 
-.link-to-login-register > a {
-    color: antiquewhite;
+h5 {
+  font-size: 1.2em;
 }
 
-.link-to-login-register > a:hover {
-    cursor: pointer;
-    color: #22371d;
+h6 {
+  font-size: 1em;
+}
+
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+  padding-top: 0.5em;
+}
+
+blockquote {
+  padding: 0 2.5em;
+  border-left: 2px solid #000000;
+  font-family: Georgia, serif;
+  margin-bottom: 1.5em;
+}
+
+blockquote,
+p {
+  font-style: italic;
+}
+
+blockquote p + p {
+  padding-top: 1.5em;
+}
+
+blockquote p:last-child {
+  padding-bottom: 0;
+}
+
+blockquote p.author {
+  text-align: right;
+}
+
+body {
+  max-width: 1366px;
+  margin: auto;
+  position: relative;
+  min-height: 100vh;
+  font-optical-sizing: auto;
+  background-color: #e4e3e3;
+}
+
+h2 {
+  text-align: center;
+  border-bottom: 1px dashed #999;
+}
+
+span {
+  font-weight: bold;
+}
+
+button {
+  background-color: #4ebced;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* Media Query */
+@media (min-width: 800px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 18px;
+  }
 }
