@@ -6,30 +6,60 @@
     </div>
     <form #form="ngForm" (ngSubmit)="addTheme(form)">
       <div class="new-theme-title">
-        <label for="themeName">Title <span class="red">*</span></label>
+        <label for="name">Name <span class="red">*</span></label>
         <input
           type="text"
-          name="themeName"
-          id="themeName"
+          name="name"
+          id="name"
           ngModel
-          #inputThemeName="ngModel"
+          #inputName="ngModel"
           required
-          minlength="5"
         />
 
-        @if(inputThemeName?.touched){
+        <!-- @if(inputThemeName?.touched){
         <div>
           @if(inputThemeName?.errors?.['required']){
           <p class="error">Theme name is required.</p>
           }
-          <!---->
+          
           @if(inputThemeName?.errors?.['minlength']){
           <p class="error">Theme name must be at least 5 characters long.</p>
           }
         </div>
-        }
+        } -->
       </div>
-      <div class="new-theme-content">
+
+      <label for="date">Date <span class="red">*</span></label>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          ngModel
+          #inputDate="ngModel"
+          required
+        />
+
+        <label for="themeName">Time <span class="red">*</span></label>
+        <input
+          type="text"
+          name="time"
+          id="time"
+          ngModel
+          #inputTime="ngModel"
+          required
+        />
+
+        <label for="themeName">Place <span class="red">*</span></label>
+        <input
+          type="text"
+          name="place"
+          id="place"
+          ngModel
+          #inputPlace="ngModel"
+          required
+        />
+
+      <!-- <div class="new-theme-content">
         <label for="postText">Post <span class="red">*</span></label>
         <textarea
           type="text"
@@ -48,13 +78,13 @@
           @if(inputPostText?.errors?.['required']){
           <p class="error">The field with your post is required.</p>
           }
-          <!---->
+          
           @if(inputPostText?.errors?.['minlength']){
           <p class="error">Post must be at least 10 characters long.</p>
           }
         </div>
         }
-      </div>
+      </div> -->
       <div class="new-theme-buttons">
         <button class="cancel">Cancel</button>
         <button

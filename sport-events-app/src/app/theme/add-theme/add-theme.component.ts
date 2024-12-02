@@ -18,10 +18,10 @@ export class AddThemeComponent {
       return;
     }
 
-    const { themeName, postText } = form.value;
+    const { name, date, time, place } = form.value;
 
-    this.apiService.createTheme(themeName, postText).subscribe(() => {
-      this.router.navigate(['/themes']);
+    this.apiService.createEvent(name, date, time, place).subscribe(() => {
+      this.router.navigate(['/all-events']);
     });
   }
 }
