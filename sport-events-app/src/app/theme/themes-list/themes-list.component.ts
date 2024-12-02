@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
-import { Theme } from '../../types/theme';
+import { Event } from '../../types/event';
 import { LoaderComponent } from '../../shared/loader/loader.component';
 import { RouterLink } from '@angular/router';
 import { SlicePipe } from '../../shared/pipes/slice.pipe';
@@ -15,14 +15,14 @@ import { DatePipe } from '@angular/common';
   styleUrl: './themes-list.component.css',
 })
 export class ThemesListComponent implements OnInit {
-  themes: Theme[] = [];
+  events: Event[] = [];
   isLoading = true;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.apiService.getThemes().subscribe((themes) => {
-      this.themes = themes;
+    this.apiService.getEvents().subscribe((events) => {
+      this.events = events;
       this.isLoading = false;
     });
   }
