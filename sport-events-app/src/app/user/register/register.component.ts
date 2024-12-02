@@ -25,7 +25,6 @@ export class RegisterComponent {
       Validators.minLength(5),
     ]),
     email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
-    tel: new FormControl(''),
     passGroup: new FormGroup(
       {
         password: new FormControl('', [
@@ -75,12 +74,11 @@ export class RegisterComponent {
     const {
       username,
       email,
-      tel,
       passGroup: { password, rePassword } = {},
     } = this.form.value;
 
     this.userService
-      .register(username!, email!, tel!, password!, rePassword!)
+      .register(username!, email!, password!, rePassword!)
       .subscribe(() => {
         this.router.navigate(['/themes']);
       });

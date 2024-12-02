@@ -1,14 +1,10 @@
-<!-- homepage -->
-<div class="container">
-  <form class="register" [formGroup]="form" (ngSubmit)="register()">
-    <fieldset>
-      <h2>Registration Form</h2>
+<div class="login-register-page-containter">
+  <form class="login-register-form" [formGroup]="form" (ngSubmit)="register()">
+    <h2>Register</h2>
 
-      <!-- username -->
-      <p class="field field-icon">
-        <label for="username">
-          <span><i class="fas fa-user"></i></span>
-        </label>
+    <section class="login-register-sections">
+      <p class="login-register-label-input">
+        <label for="username">Username:</label>
         <input
           [class]="
             isFieldTextMissing('username') || isNotMinLength
@@ -18,28 +14,26 @@
           type="text"
           name="username"
           id="username"
-          placeholder="Johny"
           formControlName="username"
         />
       </p>
 
       @if(form.get('username')?.touched){
-      <div>
-        @if(form.get('username')?.errors?.['required']){
-        <p class="error">Username is required!</p>
+        <div>
+          @if(form.get('username')?.errors?.['required']){
+          <p class="input-error-msg">Username is required!</p>
+          }
+          <!--  -->
+          @if(form.get('username')?.errors?.['minlength']){
+          <p class="input-error-msg">Username must be at least 5 characters!</p>
+          }
+        </div>
         }
-        <!--  -->
-        @if(form.get('username')?.errors?.['minlength']){
-        <p class="error">Username must be at least 5 characters!</p>
-        }
-      </div>
-      }
+    </section>
 
-      <!-- email -->
-      <p class="field field-icon">
-        <label for="email"
-          ><span><i class="fas fa-envelope"></i></span
-        ></label>
+    <section class="login-register-sections">
+      <p class="login-register-label-input">
+        <label for="email">Email:</label>
         <input
           [class]="
             isFieldTextMissing('email') || isEmailNotValid ? 'input-error' : ''
@@ -47,7 +41,6 @@
           type="email"
           name="email"
           id="email"
-          placeholder="john.doe@gmail.com"
           formControlName="email"
         />
       </p>
@@ -55,37 +48,18 @@
       @if(form.get('email')?.touched){
       <div>
         @if(form.get('email')?.errors?.['required']){
-        <p class="error">Email is required!</p>
-        }
-        <!--  -->
-        @if(form.get('email')?.errors?.['emailValidator']){
-        <p class="error">Email is not valid!</p>
+        <p class="input-error-msg">Email is required!</p>
+        } @if(form.get('email')?.errors?.['emailValidator']){
+        <p class="input-error-msg">Email is not valid!</p>
         }
       </div>
       }
-      <!-- telephone -->
-      <p class="field field-icon">
-        <label for="tel"
-          ><span><i class="fas fa-phone"></i></span
-        ></label>
-        <select name="select-tel" id="select-tel" class="tel">
-          <option value="00359">+359</option>
-        </select>
-        <input
-          type="text"
-          name="tel"
-          id="tel"
-          placeholder="885 888 888"
-          formControlName="tel"
-        />
-      </p>
+    </section>
 
-      <div formGroupName="passGroup">
-        <!-- password -->
-        <p class="field field-icon">
-          <label for="password"
-            ><span><i class="fas fa-lock"></i></span
-          ></label>
+    <div class="passwords-wrapper" formGroupName="passGroup">
+      <section class="login-register-sections">
+        <p class="login-register-label-input">
+          <label for="password">Password:</label>
           <input
             [class]="(
               (passGroup?.get('password')?.touched &&
@@ -96,7 +70,6 @@
             type="password"
             name="password"
             id="password"
-            placeholder="******"
             formControlName="password"
           />
         </p>
@@ -104,30 +77,26 @@
         @if(passGroup?.get('password')?.touched){
         <div>
           @if(passGroup?.get('password')?.errors?.['required']){
-          <p class="error">Password is required!</p>
-          }
-          <!--  -->
-          @if(passGroup?.get('password')?.errors?.['minlength']){
-          <p class="error">Password must be at least 5 characters!</p>
+          <p class="input-error-msg">Password is required!</p>
+          } @if(passGroup?.get('password')?.errors?.['minlength']){
+          <p class="input-error-msg">Password must be at least 6 characters!</p>
           }
         </div>
         }
+      </section>
 
-        <!-- rePassword -->
-        <p class="field field-icon">
-          <label for="rePassword"
-            ><span><i class="fas fa-lock"></i></span
-          ></label>
+      <section class="login-register-sections">
+        <p class="login-register-label-input">
+          <label for="rePassword">Repeat Password:</label>
           <input
             [class]="(
-              (passGroup?.get('rePassword')?.touched &&
-              (passGroup?.get('rePassword')?.errors?.['required'] ||
-              passGroup?.errors?.['matchPasswordsValidator'])) 
-            ) ? 'input-error' : ''"
+          (passGroup?.get('rePassword')?.touched &&
+          (passGroup?.get('rePassword')?.errors?.['required'] ||
+          passGroup?.errors?.['matchPasswordsValidator'])) 
+        ) ? 'input-error' : ''"
             type="password"
             name="rePassword"
             id="rePassword"
-            placeholder="******"
             formControlName="rePassword"
           />
         </p>
@@ -136,23 +105,28 @@
         <div>
           @if(passGroup?.errors?.['matchPasswordsValidator'] ||
           passGroup?.get('rePassword')?.errors?.['required']){
-          <p class="error">Repeat Password does not match password!</p>
+          <p class="input-error-msg">
+            Repeat Password does not match password!
+          </p>
           }
         </div>
         }
-      </div>
+      </section>
+    </div>
 
-      <button
-        [disabled]="form.invalid"
-        [style]="{ backgroundColor: form.invalid ? 'grey' : '#234465' }"
-      >
-        Create Account
-      </button>
+    <button
+      [disabled]="form.invalid"
+      [class]="
+        form.invalid
+          ? 'login-register-disabled-btn'
+          : 'login-register-enabled-btn'
+      "
+    >
+      Register
+    </button>
 
-      <p class="text-center">
-        Have an account?
-        <a routerLink="/login">Log In</a>
-      </p>
-    </fieldset>
+    <p class="link-to-login-register">
+      If you are not registered yet <a routerLink="/login">click here</a>!
+    </p>
   </form>
 </div>
