@@ -9,13 +9,13 @@ const { authCookieName } = require('../app-config');
 const bsonToJson = (data) => { return JSON.parse(JSON.stringify(data)) };
 const removePassword = (data) => {
     const { password, __v, ...userData } = data;
-    return userData
-}
+    return userData;
+};
 
 function register(req, res, next) {
-    const { tel, email, username, password, repeatPassword } = req.body;
+    const { email, username, password, repeatPassword } = req.body;
 
-    return userModel.create({ tel, email, username, password })
+    return userModel.create({ email, username, password })
         .then((createdUser) => {
             createdUser = bsonToJson(createdUser);
             createdUser = removePassword(createdUser);
@@ -54,7 +54,7 @@ function login(req, res, next) {
             if (!match) {
                 res.status(401)
                     .send({ message: 'Wrong email or password' });
-                return
+                return;
             }
             user = bsonToJson(user);
             user = removePassword(user);
@@ -94,9 +94,9 @@ function getProfileInfo(req, res, next) {
 
 function editProfileInfo(req, res, next) {
     const { _id: userId } = req.user;
-    const { tel, username, email } = req.body;
+    const { username, email } = req.body;
 
-    userModel.findOneAndUpdate({ _id: userId }, { tel, username, email }, { runValidators: true, new: true })
+    userModel.findOneAndUpdate({ _id: userId }, { username, email }, { runValidators: true, new: true })
         .then(x => { res.status(200).json(x) })
         .catch(next);
 }
