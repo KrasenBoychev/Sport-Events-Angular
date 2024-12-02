@@ -1,8 +1,6 @@
 export interface User {
-  themes: string[];
-  posts: string[];
+  events: string[];
   _id: string;
-  tel: string;
   email: string;
   username: string;
   password: string;
@@ -14,7 +12,6 @@ export interface User {
 export interface UserForAuth {
   username: string;
   email: string;
-  tel?: string;
   password: string;
   id: string;
 }
@@ -22,5 +19,4 @@ export interface UserForAuth {
 export interface ProfileDetails {
   username: string;
   email: string;
-  tel: string;
 }
