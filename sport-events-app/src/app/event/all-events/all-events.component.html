@@ -1,0 +1,20 @@
+<div class="all-events-container">
+  <h2>All Upcoming Sport Events</h2>
+  <section class="all-events-wrapper">
+    @for (event of events; track $index) {
+    <article class="single-event">
+      <div class="single-event-info">
+        <div class="single-event-info-heading">
+          <h3>{{ event.name }}</h3>
+        </div>
+        <div class="single-event-info-paragraph">
+          <p [routerLink]="event._id">Details</p>
+        </div>
+      </div>
+      <div class="single-event-image">
+        <img src="/images/pexels-pixabay-163444.jpg" alt="" />
+      </div>
+    </article>
+    }
+  </section>
+</div>
