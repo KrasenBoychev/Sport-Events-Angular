@@ -33,7 +33,6 @@ export class UserService implements OnDestroy {
   register(
     username: string,
     email: string,
-    tel: string,
     password: string,
     rePassword: string
   ) {
@@ -41,7 +40,6 @@ export class UserService implements OnDestroy {
       .post<UserForAuth>('/api/register', {
         username,
         email,
-        tel,
         password,
         rePassword,
       })
