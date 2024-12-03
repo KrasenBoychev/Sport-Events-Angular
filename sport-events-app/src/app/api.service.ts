@@ -34,8 +34,8 @@ export class ApiService {
     return this.http.get<Event>(`/api/events/${id}`);
   }
 
-  createEvent(name: string, date: Date, time: string, place: string) {
-    const payload = { name, date, time, place };
+  createEvent(name: string, date: Date, time: string, place: string, description: string) {
+    const payload = { name, date, time, place, description };
     return this.http.post<Event>(`/api/events`, payload);
   }
 
