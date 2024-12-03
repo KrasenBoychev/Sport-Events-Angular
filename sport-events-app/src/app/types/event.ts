@@ -8,6 +8,7 @@ export interface Event {
   date: Date;
   time: string;
   place: string;
+  description: string;
   ownerId: User;
   created_at: string;
   updatedAt: string;
