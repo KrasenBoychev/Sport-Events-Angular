@@ -17,7 +17,11 @@ const eventSchema = new mongoose.Schema(
     },
     place: {
       type: String,
-      required: true,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
     },
     usersJoined: [
       {
