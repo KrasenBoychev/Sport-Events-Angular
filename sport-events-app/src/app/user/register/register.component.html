@@ -19,16 +19,15 @@
       </p>
 
       @if(form.get('username')?.touched){
-        <div>
-          @if(form.get('username')?.errors?.['required']){
-          <p class="input-error-msg">Username is required!</p>
-          }
-          <!--  -->
-          @if(form.get('username')?.errors?.['minlength']){
-          <p class="input-error-msg">Username must be at least 5 characters!</p>
-          }
-        </div>
-        }
+      @if(form.get('username')?.errors?.['required']){
+      <div>
+        <p class="input-error-msg">Username is required!</p>
+      </div>
+      } @if(form.get('username')?.errors?.['minlength']){
+      <div>
+        <p class="input-error-msg">Username must be at least 5 characters!</p>
+      </div>
+      } }
     </section>
 
     <section class="login-register-sections">
@@ -46,14 +45,15 @@
       </p>
 
       @if(form.get('email')?.touched){
+      @if(form.get('email')?.errors?.['required']){
       <div>
-        @if(form.get('email')?.errors?.['required']){
         <p class="input-error-msg">Email is required!</p>
-        } @if(form.get('email')?.errors?.['emailValidator']){
-        <p class="input-error-msg">Email is not valid!</p>
-        }
       </div>
-      }
+      } @if(form.get('email')?.errors?.['emailValidator']){
+      <div>
+        <p class="input-error-msg">Email is not valid!</p>
+      </div>
+      } }
     </section>
 
     <div class="passwords-wrapper" formGroupName="passGroup">
@@ -75,14 +75,15 @@
         </p>
 
         @if(passGroup?.get('password')?.touched){
+        @if(passGroup?.get('password')?.errors?.['required']){
         <div>
-          @if(passGroup?.get('password')?.errors?.['required']){
           <p class="input-error-msg">Password is required!</p>
-          } @if(passGroup?.get('password')?.errors?.['minlength']){
-          <p class="input-error-msg">Password must be at least 6 characters!</p>
-          }
         </div>
-        }
+        } @if(passGroup?.get('password')?.errors?.['minlength']){
+        <div>
+          <p class="input-error-msg">Password must be at least 6 characters!</p>
+        </div>
+        } }
       </section>
 
       <section class="login-register-sections">
@@ -102,15 +103,14 @@
         </p>
 
         @if(passGroup?.get('rePassword')?.touched){
+        @if(passGroup?.errors?.['matchPasswordsValidator'] ||
+        passGroup?.get('rePassword')?.errors?.['required']){
         <div>
-          @if(passGroup?.errors?.['matchPasswordsValidator'] ||
-          passGroup?.get('rePassword')?.errors?.['required']){
           <p class="input-error-msg">
             Repeat Password does not match password!
           </p>
-          }
         </div>
-        }
+        } }
       </section>
     </div>
 
