@@ -1,1 +1,126 @@
-<p>add-event works!</p>
+<div class="add-event-container">
+  <form class="add-event-form" #form="ngForm" (ngSubmit)="addEvent(form)">
+    <h2>Create New Event</h2>
+
+    <section class="add-event-sections">
+      <p class="add-event-label-input">
+        <label for="name">Name:</label>
+        <input
+          [class]="
+            (inputName?.touched && inputName?.errors?.['required']) ? 'input-error': ''"
+          type="text"
+          name="name"
+          id="name"
+          ngModel
+          #inputName="ngModel"
+          required
+        />
+      </p>
+
+      @if(inputName?.touched){ @if(inputName?.errors?.['required']){
+      <div>
+        <p class="input-error-msg">Name is required!</p>
+      </div>
+      } }
+    </section>
+
+    <section class="add-event-sections">
+        <p class="add-event-label-input">
+          <label for="date">Date:</label>
+          <input
+            [class]="
+              (inputDate?.touched && inputDate?.errors?.['required']) ? 'input-error': ''"
+            type="date"
+            name="date"
+            id="date"
+            ngModel
+            #inputDate="ngModel"
+            required
+          />
+        </p>
+  
+        @if(inputDate?.touched){ @if(inputDate?.errors?.['required']){
+        <div>
+          <p class="input-error-msg">Date is required!</p>
+        </div>
+        } }
+      </section>
+
+      <section class="add-event-sections">
+        <p class="add-event-label-input">
+          <label for="time">Time:</label>
+          <input
+            [class]="
+              (inputTime?.touched && inputTime?.errors?.['required']) ? 'input-error': ''"
+            type="time"
+            name="time"
+            id="time"
+            ngModel
+            #inputTime="ngModel"
+            required
+          />
+        </p>
+  
+        @if(inputTime?.touched){ @if(inputTime?.errors?.['required']){
+        <div>
+          <p class="input-error-msg">Time is required!</p>
+        </div>
+        } }
+      </section>
+
+      <section class="add-event-sections">
+        <p class="add-event-label-input">
+          <label for="place">Place:</label>
+          <input
+            [class]="
+              (inputPlace?.touched && inputPlace?.errors?.['required']) ? 'input-error': ''"
+            type="text"
+            name="place"
+            id="place"
+            ngModel
+            #inputPlace="ngModel"
+            required
+          />
+        </p>
+  
+        @if(inputPlace?.touched){ @if(inputPlace?.errors?.['required']){
+        <div>
+          <p class="input-error-msg">Place is required!</p>
+        </div>
+        } }
+      </section>
+
+      <section class="add-event-sections">
+        <p class="add-event-label-input">
+          <label for="description">Description:</label>
+          <input
+            [class]="
+              (inputDescription?.touched && inputDescription?.errors?.['required']) ? 'input-error': ''"
+            type="textarea"
+            name="description"
+            id="description"
+            ngModel
+            #inputDescription="ngModel"
+            required
+          />
+        </p>
+  
+        @if(inputDescription?.touched){ @if(inputDescription?.errors?.['required']){
+        <div>
+          <p class="input-error-msg">Description is required!</p>
+        </div>
+        } }
+      </section>
+
+    <button
+      [disabled]="form.invalid"
+      [class]="
+        form.invalid
+          ? 'add-event-disabled-btn'
+          : 'add-event-enabled-btn'
+      "
+    >
+      Create
+    </button>
+  </form>
+</div>
