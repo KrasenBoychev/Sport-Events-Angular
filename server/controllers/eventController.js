@@ -25,10 +25,10 @@ function getSingleEvent(req, res, next) {
 }
 
 function createEvent(req, res, next) {
-    const { name, date, time, place } = req.body;
+    const { name, date, time, place, description } = req.body;
     const { _id: userId } = req.user;
 
-    eventModel.create({ name, date, time, place, ownerId: userId })
+    eventModel.create({ name, date, time, place, description, ownerId: userId })
         .then(
             event => {
         //     newPost(postText, userId, theme._id)
