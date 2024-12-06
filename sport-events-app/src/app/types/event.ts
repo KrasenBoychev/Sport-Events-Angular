@@ -9,7 +9,7 @@ export interface Event {
   time: string;
   place: string;
   description: string;
-  ownerId: User;
+  ownerId: string;
   created_at: string;
   updatedAt: string;
   __v: number;
