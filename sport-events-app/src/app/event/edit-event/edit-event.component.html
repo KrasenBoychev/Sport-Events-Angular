@@ -1,0 +1,137 @@
+<div class="edit-event-container">
+    <form class="edit-event-form" #form="ngForm" (ngSubmit)="editEvent(form)">
+      <h2>Edit Event</h2>
+  
+      <section class="edit-event-sections">
+        <p class="edit-event-label-input">
+          <label for="name">Name:</label>
+          <input
+            [class]="
+              (inputName?.touched && inputName?.errors?.['required']) ? 'input-error': ''"
+            type="text"
+            name="name"
+            id="name"
+            ngModel
+            #inputName="ngModel"
+            required
+          />
+        </p>
+  
+        @if(inputName?.touched){ @if(inputName?.errors?.['required']){
+        <div>
+          <p class="input-error-msg">Name is required!</p>
+        </div>
+        } }
+      </section>
+  
+      <section class="edit-event-sections">
+          <p class="edit-event-label-input">
+            <label for="date">Date:</label>
+            <input
+              [class]="
+                (inputDate?.touched && inputDate?.errors?.['required']) ? 'input-error': ''"
+              type="date"
+              name="date"
+              id="date"
+              ngModel
+              #inputDate="ngModel"
+              required
+              [min]="minDate"
+            />
+          </p>
+    
+          @if(inputDate?.touched){ @if(inputDate?.errors?.['required']){
+          <div>
+            <p class="input-error-msg">Date is required!</p>
+          </div>
+          } }
+        </section>
+  
+        <section class="edit-event-sections">
+          <p class="edit-event-label-input">
+            <label for="time">Time:</label>
+            <input
+              [class]="
+                (inputTime?.touched && inputTime?.errors?.['required']) ? 'input-error': ''"
+              type="time"
+              name="time"
+              id="time"
+              ngModel
+              #inputTime="ngModel"
+              required
+            />
+          </p>
+    
+          @if(inputTime?.touched){ @if(inputTime?.errors?.['required']){
+          <div>
+            <p class="input-error-msg">Time is required!</p>
+          </div>
+          } }
+        </section>
+  
+        <section class="edit-event-sections">
+          <p class="edit-event-label-input">
+            <label for="place">Place:</label>
+            <input
+              [class]="
+                (inputPlace?.touched && inputPlace?.errors?.['required']) ? 'input-error': ''"
+              type="text"
+              name="place"
+              id="place"
+              ngModel
+              #inputPlace="ngModel"
+              required
+            />
+          </p>
+    
+          @if(inputPlace?.touched){ @if(inputPlace?.errors?.['required']){
+          <div>
+            <p class="input-error-msg">Place is required!</p>
+          </div>
+          } }
+        </section>
+  
+        <section class="edit-event-sections">
+          <p class="edit-event-label-input">
+            <label for="description">Description:</label>
+            <input
+              [class]="
+                (inputDescription?.touched && inputDescription?.errors?.['required']) ? 'input-error': ''"
+              type="textarea"
+              name="description"
+              id="description"
+              placeholder="maximum 50 symbols"
+              ngModel
+              #inputDescription="ngModel"
+              required
+              maxlength="50"
+            />
+          </p>
+    
+          @if(inputDescription?.touched){ @if(inputDescription?.errors?.['required']){
+          <div>
+            <p class="input-error-msg">Description is required!</p>
+          </div>
+          } 
+          
+          @if(inputDescription?.errors?.['maxlength']){
+            <div>
+              <p class="input-error-msg">Description should be maximum 50 symbols!</p>
+            </div>
+            }
+        }
+        </section>
+  
+      <button
+        [disabled]="form.invalid"
+        [class]="
+          form.invalid
+            ? 'edit-event-disabled-btn'
+            : 'edit-event-enabled-btn'
+        "
+      >
+        Create
+      </button>
+    </form>
+  </div>
+  
