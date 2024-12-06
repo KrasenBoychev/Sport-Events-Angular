@@ -48,14 +48,43 @@
     gap: 20px;
 }
 
-.join-btn {
-    flex-grow: 1;
-    display: flex;
-    padding: 15px 120px;
+.event-details > p > span {
+    font-weight: 600;
 }
 
-.join-btn > button {
+.single-event-btn {
     flex-grow: 1;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-event-btn > button {
+    width: 30%;
+    height: 70%;
     font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #FFF;
     border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.single-event-btn > button:hover {
+    cursor: pointer;
+    color: #22371d;
+    background-color: #FFF;
+}
+
+.event-join-btn {
+    background-color: #22371d;
+}
+
+.event-edit-btn {
+    background-color: green;
+}
+
+.event-delete-btn {
+    background-color: rgb(192, 6, 6);
 }
