@@ -6,15 +6,23 @@
       </div>
       <section class="event-info">
         <div class="event-details">
-          <p>Date: {{event.date}}</p>
-          <p>Time: {{event.time}}</p>
-          <p>Place: {{event.place}}</p>
-          <p>People joined: {{event.usersJoined ? event.usersJoined.length : 0}}</p>
-          <p>Description: {{ event.description }}</p>
+          <p><span>Date:</span> {{event.date | date : "dd-mm-yyyy"}}</p>
+          <p><span>Time:</span> {{event.time}}</p>
+          <p><span>Place:</span> {{event.place}}</p>
+          <p><span>People joined:</span> {{event.usersJoined ? event.usersJoined.length : 0}}</p>
+          <p><span>Description:</span> {{ event.description }}</p>
         </div>
-        <div class="join-btn">
-          <button>Join</button>
-        </div>
+        @if (userId === event.ownerId) {
+          <div class="single-event-btn">
+            <button class="event-edit-btn">Edit</button>
+            <button class="event-delete-btn">Delete</button>
+          </div>
+        } @else {
+          <div class="single-event-btn">
+            <button class="event-join-btn">Join</button>
+          </div>
+        }
+        
       </section>
     </div>
   </div>
