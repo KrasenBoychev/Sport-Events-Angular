@@ -36,6 +36,7 @@
             ngModel
             #inputDate="ngModel"
             required
+            [min]="minDate"
           />
         </p>
   
@@ -99,9 +100,11 @@
             type="textarea"
             name="description"
             id="description"
+            placeholder="maximum 50 symbols"
             ngModel
             #inputDescription="ngModel"
             required
+            maxlength="50"
           />
         </p>
   
@@ -109,7 +112,14 @@
         <div>
           <p class="input-error-msg">Description is required!</p>
         </div>
-        } }
+        } 
+        
+        @if(inputDescription?.errors?.['maxlength']){
+          <div>
+            <p class="input-error-msg">Description should be maximum 50 symbols!</p>
+          </div>
+          }
+      }
       </section>
 
     <button
