@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
-import moment from 'moment';
-
+import { minDate } from '../../utils/setMinDate';
 @Component({
   selector: 'app-add-event',
   standalone: true,
@@ -12,11 +11,7 @@ import moment from 'moment';
   styleUrl: './add-event.component.css'
 })
 export class AddEventComponent {
-  now = new Date();
-  year = this.now.getFullYear();
-  month = this.now.getMonth();
-  day = this.now.getDay() + 2;
-  minDate = moment({year: this.year, month: this.month, day: this.day}).format('YYYY-MM-DD');
+  minDate = minDate();
 
   constructor(private apiService: ApiService, private router: Router) {}
 
