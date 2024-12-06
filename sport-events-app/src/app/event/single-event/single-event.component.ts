@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user.service';
 import { Event } from '../../types/event';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-single-event',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './single-event.component.html',
   styleUrl: './single-event.component.css'
 })
@@ -16,7 +17,6 @@ export class SingleEventComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private apiService: ApiService,
     private userService: UserService
   ) {}
 
@@ -24,15 +24,11 @@ export class SingleEventComponent {
     return this.userService.isLogged;
   }
 
-  get username(): string {
-    return this.userService.user?.username || '';
+  get userId(): string {        
+    return this.userService.user?._id || '';
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['eventId'];
-
-    this.apiService.getSingleEvent(id).subscribe((event: Event) => {
-      this.event = event;
-    });
+    this.event = this.route.snapshot.data['event'];
   }
 }
