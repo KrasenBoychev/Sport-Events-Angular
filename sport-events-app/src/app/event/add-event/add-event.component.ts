@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
+import moment from 'moment';
 
 @Component({
   selector: 'app-add-event',
@@ -11,6 +12,12 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './add-event.component.css'
 })
 export class AddEventComponent {
+  now = new Date();
+  year = this.now.getFullYear();
+  month = this.now.getMonth();
+  day = this.now.getDay() + 2;
+  minDate = moment({year: this.year, month: this.month, day: this.day}).format('YYYY-MM-DD');
+
   constructor(private apiService: ApiService, private router: Router) {}
 
   addEvent(form: NgForm) {
@@ -18,9 +25,9 @@ export class AddEventComponent {
       return;
     }
 
-    const { name, date, time, place, description } = form.value;
+    const { name, date, time, place, textareaDescription } = form.value;
 
-    this.apiService.createEvent(name, date, time, place, description).subscribe(() => {
+    this.apiService.createEvent(name, date, time, place, textareaDescription).subscribe(() => {
       this.router.navigate(['/all-events']);
     });
   }
