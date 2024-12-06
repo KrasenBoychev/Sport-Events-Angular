@@ -13,6 +13,7 @@ import { ThemesListComponent } from './theme/themes-list/themes-list.component';
 import { AllEventsComponent } from './event/all-events/all-events.component';
 import { AddEventComponent } from './event/add-event/add-event.component';
 import { SingleEventComponent } from './event/single-event/single-event.component';
+import { allEventsResolver, singleEventResolver } from './guards/event-resolvers.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,7 +24,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate:[NonAuthGuard] },
   { path: 'profile', component: ProfileComponent },
   // { path: 'all-events', component: AllEventsComponent},
-  { path: 'add-event', component: AddEventComponent},
+  { path: 'add-event', component: AddEventComponent },
 
   //   End - User routing
 
@@ -31,10 +32,11 @@ export const routes: Routes = [
   {
     path: 'all-events',
     children: [
-      { path: '', component: AllEventsComponent },
+      { path: '', component: AllEventsComponent, resolve: { events: allEventsResolver } },
       {
         path: ':eventId',
         component: SingleEventComponent,
+        resolve: { event: singleEventResolver },
         canActivate: [AuthGuard],
       },
     ],
