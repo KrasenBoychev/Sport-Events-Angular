@@ -2,7 +2,7 @@ import { Post } from './post';
 import { User } from './user';
 
 export interface Event {
-  usersJoined: [];
+  usersJoined: string[];
   _id: string;
   name: string;
   date: Date;
