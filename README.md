@@ -7,18 +7,18 @@
 ### Executing program
 * Run Client
 ```
-npm cd client
+cd sport-events-app
 ```
 ```
 npm install
 ```
 ```
-npm run dev
+ng serve
 ```
 
 * Run Server
 ```
-npm cd server
+cd server
 ```
 ```
 npm install
