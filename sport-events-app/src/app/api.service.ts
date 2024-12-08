@@ -39,6 +39,16 @@ export class ApiService {
     return this.http.post<Event>(`/api/events`, payload);
   }
 
+  addUserToEvent(userId: string, eventId: string) {
+    const payload = { userId };
+    return this.http.put<Event>(`/api/events/join/${eventId}`, payload);
+  }
+
+  removeUserFromEvent(userId: string, eventId: string) {
+    const payload = { userId };
+    return this.http.put<Event>(`/api/events/cancel/${eventId}`, payload);
+  }
+
   // CRUD operations
   // update -> http.put
   // updateTheme(themeId: string, themeName: string, postText: string) {
@@ -55,7 +65,7 @@ export class ApiService {
   // }
 
   // delete -> http.delete theme ID
-  deletePost(themeId: string, postId: string) {
-    return this.http.delete(`/api/themes/${themeId}/posts/${postId}`);
-  }
+  // deletePost(themeId: string, postId: string) {
+  //   return this.http.delete(`/api/themes/${themeId}/posts/${postId}`);
+  // }
 }
