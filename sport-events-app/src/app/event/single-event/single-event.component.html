@@ -19,7 +19,11 @@
           </div>
         } @else {
           <div class="single-event-btn">
-            <button class="event-join-btn">Join</button>
+            @if (hasJoined) {
+              <button class="event-join-btn" (click)="onCancelEvent()">Cancel</button>
+            } @else {
+              <button class="event-join-btn" (click)="onJoinEvent()">Join</button>
+            }
           </div>
         }
         
