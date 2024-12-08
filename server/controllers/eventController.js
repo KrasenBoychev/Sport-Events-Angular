@@ -41,18 +41,32 @@ function createEvent(req, res, next) {
         .catch(next);
 }
 
-// function subscribe(req, res, next) {
-//     const themeId = req.params.themeId;
-//     const { _id: userId } = req.user;
-//     themeModel.findByIdAndUpdate({ _id: themeId }, { $addToSet: { subscribers: userId } }, { new: true })
-//         .then(updatedTheme => {
-//             res.status(200).json(updatedTheme)
-//         })
-//         .catch(next);
-// }
+function joinEvent(req, res, next) {
+    const eventId = req.params.eventId;
+    const { userId } = req.body;
+
+    eventModel.findByIdAndUpdate(eventId, { $push: { usersJoined: userId } }, { 'new': true})
+        .then(updatedEvent => {
+            res.status(200).json(updatedEvent);
+        })
+        .catch(next);
+}
+
+function cancelEvent(req, res, next) {
+    const eventId = req.params.eventId;
+    const { userId } = req.body;
+
+    eventModel.findByIdAndUpdate(eventId, { $pull: { usersJoined: userId } }, { 'new': true})
+        .then(updatedEvent => {
+            res.status(200).json(updatedEvent);
+        })
+        .catch(next);
+}
 
 module.exports = {
     getEvents,
     getSingleEvent,
     createEvent,
+    joinEvent,
+    cancelEvent,
 };
