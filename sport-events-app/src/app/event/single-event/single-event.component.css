@@ -52,7 +52,7 @@
     font-weight: 600;
 }
 
-.single-event-btn {
+.single-event-btn, .delete-event-btns {
     flex-grow: 1;
     display: flex;
     gap: 30px;
@@ -60,7 +60,7 @@
     align-items: center;
 }
 
-.single-event-btn > button {
+.single-event-btn > button, .delete-event-btns > button {
     width: 30%;
     height: 70%;
     font-size: 1.5rem;
@@ -88,3 +88,58 @@
 .event-delete-btn {
     background-color: rgb(192, 6, 6);
 }
+
+.delete-event-pop-up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    opacity: 0.98;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-event-wrapper {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: #FFF;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-event-heading {
+    flex: 0 0 50%;
+    display: flex;
+    align-items: center;
+}
+
+.delete-event-heading > h3 {
+    font-size: 50px;
+    text-align: center;
+}
+
+.delete-event-btns {
+    flex: 0 0 50%;
+    width: 100%;
+}
+
+.delete-event-btns > button {
+    height: 30%;
+}
+
+.delete-event-btns > button:hover {
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: #22371d;
+}
+
