@@ -11,13 +11,20 @@ header > h3 {
   font-weight: 400;
   font-style: normal;
   font-size: 1.5rem;
-  flex: 0 0 60%;
+  flex-grow: 1;
 }
 
 header > ul {
   display: flex;
-  flex: 0 0 40%;
   justify-content: space-between;
+}
+
+.logged-in {
+  flex: 0 0 50%;
+}
+
+.logged-out {
+  flex: 0 0 30%;
 }
 
 header a:hover {

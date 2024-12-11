@@ -1,23 +1,27 @@
 <header>
   <h3><a routerLink="/home">Sport Events</a></h3>
-  <ul>
+  <ul class="{{isLoggedIn ? 'logged-in' : 'logged-out'}}">
     <li><a routerLink="/all-events">All Events</a></li>
-    <li><a routerLink="/add-event">Add Event</a></li>
-    <li><a routerLink="/about">About</a></li>
     @if(isLoggedIn){
-      <li class="user-profile-btn">
-        <a routerLink="/profile">{{ username }}'s Profile</a>
-      </li>
-      <li>
-        <a (click)="logout()">Logout</a>
-      </li>
-      } @else {
-      <li>
-        <a routerLink="/login">Login</a>
-      </li>
-      <li>
-        <a routerLink="/register">Register</a>
-      </li>
-      }
+    <li>
+      <a routerLink="/user-events">My Events</a>
+    </li>
+    <li>
+      <a routerLink="/add-event">Add Event</a>
+    </li>
+    <li class="user-profile-btn">
+      <a routerLink="/profile">{{ username }}'s Profile</a>
+    </li>
+    <li>
+      <a (click)="logout()">Logout</a>
+    </li>
+    } @else {
+    <li>
+      <a routerLink="/login">Login</a>
+    </li>
+    <li>
+      <a routerLink="/register">Register</a>
+    </li>
+    }
   </ul>
 </header>
