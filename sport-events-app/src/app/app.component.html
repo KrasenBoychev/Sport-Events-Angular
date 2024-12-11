@@ -1,9 +1,14 @@
 <app-authenticate>
   <div class="app-container">
     <app-header />
+
     <main>
       <router-outlet />
+      @if (error) {
+      <app-error-msg />
+      }
     </main>
+
     <app-footer />
   </div>
 </app-authenticate>
