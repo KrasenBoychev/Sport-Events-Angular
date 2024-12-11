@@ -5,14 +5,14 @@ import { LoaderComponent } from '../shared/loader/loader.component';
 @Component({
   selector: 'app-authenticate',
   standalone: true,
-  imports: [LoaderComponent, LoaderComponent],
+  imports: [LoaderComponent],
   templateUrl: './authenticate.component.html',
   styleUrl: './authenticate.component.css',
 })
 export class AuthenticateComponent implements OnInit {
   isAuthenticating = true;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.getProfile().subscribe({
@@ -27,4 +27,5 @@ export class AuthenticateComponent implements OnInit {
       },
     });
   }
+
 }
