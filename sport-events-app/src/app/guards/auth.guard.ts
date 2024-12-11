@@ -14,9 +14,30 @@ export const AuthGuard: CanActivateFn = (
   const userService = inject(UserService);
   const router = inject(Router);
 
-  if (userService.isLogged) {
+  const userLocalStorage = localStorage.getItem('user');
+
+  if (userService.isLogged || userLocalStorage) {
     return true;
   }
+
   router.navigate(['/home']);
   return false;
 };
+
+export const LoggedInGuard: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+) => {
+  const userService = inject(UserService);
+  const router = inject(Router);
+
+  const userLocalStorage = localStorage.getItem('user');
+
+  if (userService.isLogged || userLocalStorage) {
+    router.navigate(['/home']);
+    return false;
+  }
+
+  return true;
+};
+
