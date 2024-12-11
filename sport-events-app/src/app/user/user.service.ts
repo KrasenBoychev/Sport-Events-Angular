@@ -4,17 +4,17 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<UserForAuth | null>(null);
-  private user$ = this.user$$.asObservable();
+  public user$ = this.user$$.asObservable();
 
   USER_KEY = '[user]';
   user: UserForAuth | null = null;
   userSubscription: Subscription | null = null;
 
-  get isLogged(): boolean {
+  get isLogged() {
     return !!this.user;
   }
 
