@@ -2,7 +2,7 @@
 
 Sport Events is a project built for SoftUni, Angular Exam. It is a website where users can join or cancel events and also they can create their own events. When an event is created, the owner can edit it or delete it. Authenticated users can access their account details and edit their username and email. Not logged in users have an access to see all events and read their details, but if they want to join or cancel an event, they need to login or register.
 
-There are implemented UserService, EventService and ErrorMsgService. The UserService keeps an information about the authenticated user and is being injected in the Router Guards, so logged in users cannot access Login and Register Pages, while not logged in users cannot access teh following pages: My Events, Add Event, Edit Page, My Profile. The EventService holds an information about the current event and in case the owner wants to edit it, the data from the event fulfills automatically in the Edit Page input fields. The ErrorMsgService works as a global service and shows the error messasges for 3 seconds over the current content on the top right corner of the screen and then they disappear.
+There are implemented UserService, EventService and ErrorMsgService. The UserService keeps an information about the authenticated user and is being injected in the Router Guards, so logged in users cannot access Login and Register Pages, while not logged in users cannot access the following pages: My Events, Add Event, Edit Page, My Profile. The EventService holds an information about the current event and in case the owner wants to edit it, the data from the event fulfills automatically in the Edit Page input fields. The ErrorMsgService works as a global service and shows the error messasges for 3 seconds over the current content on the top right corner of the screen and then they disappear.
 
 The project uses MongoDB to store the records.
 
@@ -49,7 +49,7 @@ The project uses MongoDB to store the records.
 
   ![Alt text](./images-ReadMe/user-validation.png)
 
-  - #### The Single Event Page shows Edit and Delete buttons to an owner of an event:
+  - #### The Single Event Page shows Edit and Delete buttons to the owner of the event:
  
   ![Alt text](./images-ReadMe/event-details.png)
 
@@ -59,11 +59,11 @@ The project uses MongoDB to store the records.
 
   ![Alt text](./images-ReadMe/edit-validation.png)
 
-   - #### When Delete button clicked a pop up message shows:
+   - #### When Delete button is clicked a pop up message shows:
 
   ![Alt text](./images-ReadMe/edit-delete.png)
 
-    - #### The Single Event Page shows Join or Cancel buttons if the user is not the owner of the event and the "People joined" field changes dinamically:
+   - #### The Single Event Page shows Join or Cancel button if the user is not the owner of the event. The "People joined" field changes dinamically:
 
   ![Alt text](./images-ReadMe/event-details-join.png)
 
