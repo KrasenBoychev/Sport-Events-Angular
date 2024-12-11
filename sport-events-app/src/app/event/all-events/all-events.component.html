@@ -1,7 +1,9 @@
 <div class="all-events-container">
   <h2>All Upcoming Sport Events</h2>
   <section class="all-events-wrapper">
-    @for (event of events; track $index) {
+    @if (events.length === 0) {
+    <p class="no-events">No events available at the moment!</p>
+    } @else { @for (event of events; track $index) {
     <article class="single-event">
       <div class="single-event-info">
         <div class="single-event-info-heading">
@@ -15,6 +17,6 @@
         <img src="/images/pexels-pixabay-163444.jpg" alt="" />
       </div>
     </article>
-    }
+    } }
   </section>
 </div>
