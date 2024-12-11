@@ -13,16 +13,36 @@ ul {
   list-style-type: none;
 }
 
-app-home, app-all-events, app-login, app-register, app-profile, app-single-event, app-add-event, app-error-page {
+app-home,
+app-all-events,
+app-user-events,
+app-single-event,
+app-add-event,
+app-edit-event,
+app-login,
+app-register,
+app-profile,
+app-page-not-found {
   flex-grow: 1;
   min-height: 100%;
 }
 
-app-login, app-register, app-profile, app-single-event, app-add-event {
+app-login,
+app-register,
+app-profile,
+app-single-event,
+app-add-event,
+app-edit-event {
   padding: 20px 0;
 }
 
-.login-register-page-containter, .add-event-container {
+app-single-event {
+  position: relative;
+}
+
+.login-register-page-containter,
+.add-event-container,
+.edit-event-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -30,7 +50,9 @@ app-login, app-register, app-profile, app-single-event, app-add-event {
   justify-content: center;
 }
 
-.login-register-form, .add-event-form {
+.login-register-form,
+.add-event-form,
+.edit-event-form {
   font-size: 1.2rem;
   padding: 50px;
   color: #FFF;
@@ -48,30 +70,41 @@ app-login, app-register, app-profile, app-single-event, app-add-event {
   gap: 30px;
 }
 
-.login-register-sections, .add-event-sections {
+.login-register-sections,
+.add-event-sections,
+.edit-event-sections {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.login-register-form > h2, .add-event-form > h2 {
+.login-register-form>h2,
+.add-event-form>h2,
+.edit-event-form>h2 {
   margin-bottom: 20px;
   text-align: center;
   text-transform: uppercase;
 }
 
-.login-register-label-input, .add-event-label-input {
+.login-register-label-input,
+.add-event-label-input,
+.edit-event-label-input {
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
 
-.login-register-label-input > input, .add-event-label-input > input {
+.login-register-label-input>input,
+.add-event-label-input>input,
+.edit-event-label-input>input {
   width: 250px;
   padding: 2px;
 }
 
-.login-register-form > button, .profile-edit-button, .add-event-form > button {
+.login-register-form>button,
+.profile-edit-button,
+.add-event-form>button,
+.edit-event-button {
   width: 50%;
   align-self: center;
   margin-top: 10px;
@@ -83,22 +116,28 @@ app-login, app-register, app-profile, app-single-event, app-add-event {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.login-register-enabled-btn:hover, .profile-edit-button:hover, .add-event-enabled-btn:hover {
+.login-register-enabled-btn:hover,
+.profile-edit-button:hover,
+.add-event-enabled-btn:hover,
+.edit-event-button:hover {
   cursor: pointer;
   color: #22371d;
   background-color: #FFF;
   border: none;
 }
 
-.login-register-enabled-btn, .add-event-enabled-btn {
+.login-register-enabled-btn,
+.add-event-enabled-btn {
   background-color: #22371d;
 }
 
-.login-register-disabled-btn, .add-event-disabled-btn {
+.login-register-disabled-btn,
+.add-event-disabled-btn {
   cursor: auto;
 }
 
-.login-register-disabled-btn, .add-event-disabled-btn {
+.login-register-disabled-btn,
+.add-event-disabled-btn {
   background-color: #22371d;
 }
 
@@ -108,11 +147,11 @@ app-login, app-register, app-profile, app-single-event, app-add-event {
   text-align: center;
 }
 
-.link-to-login-register > a {
+.link-to-login-register>a {
   color: antiquewhite;
 }
 
-.link-to-login-register > a:hover {
+.link-to-login-register>a:hover {
   cursor: pointer;
   color: #22371d;
 }
@@ -123,6 +162,46 @@ app-login, app-register, app-profile, app-single-event, app-add-event {
 
 .input-error-msg {
   color: rgb(255, 213, 0);
+}
+
+.profile-btn-wrapper,
+.edit-event-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.profile-edit-button,
+.edit-event-button {
+  background-color: #22371d;
+}
+
+.profile-edit-button:hover,
+.edit-event-button:hover {
+  background-color: #FFF;
+}
+
+.red-button {
+  background-color: red;
+}
+
+.grey-disabled-button {
+  background-color: grey;
+}
+
+.grey-disabled-button:hover {
+  cursor: auto;
+  color: #FFF;
+  background-color: grey;
+}
+
+.green-enabled-button {
+  background-color: greenyellow;
+}
+
+
+.green-enabled-button:hover {
+  cursor: pointer;
 }
 
 
