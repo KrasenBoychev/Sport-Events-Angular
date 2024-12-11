@@ -80,6 +80,7 @@ export class RegisterComponent {
     this.userService
       .register(username!, email!, password!, rePassword!)
       .subscribe(() => {
+        localStorage.setItem('user', email!);
         this.router.navigate(['/']);
       });
   }
