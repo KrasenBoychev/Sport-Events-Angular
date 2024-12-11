@@ -22,6 +22,7 @@ export class HeaderComponent {
 
   logout() {
     this.userService.logout().subscribe(() => {
+      localStorage.clear();
       this.router.navigate(['/login']);
     });
   }
