@@ -1,33 +1,56 @@
 <div class="event-page-container">
-    <h2>{{event.name}}</h2>
-    <div class="event-wrapper">
-      <div class="event-image">
-        <img src="/images/pexels-pixabay-163444.jpg" alt="" />
+  <h2>{{ event.name }}</h2>
+  <div class="event-wrapper">
+    <div class="event-image">
+      <img src="/images/pexels-pixabay-163444.jpg" alt="" />
+    </div>
+    <section class="event-info">
+      <div class="event-details">
+        <p><span>Date:</span> {{ event.date | date : "dd-MM-YYYY" }}</p>
+        <p><span>Time:</span> {{ event.time }}</p>
+        <p><span>Place:</span> {{ event.place }}</p>
+        <p>
+          <span>People joined:</span>
+          {{ event.usersJoined ? eventPeopleJoined : 0 }}
+        </p>
+        <p><span>Description:</span> {{ event.description }}</p>
       </div>
-      <section class="event-info">
-        <div class="event-details">
-          <p><span>Date:</span> {{event.date | date : "dd-mm-yyyy"}}</p>
-          <p><span>Time:</span> {{event.time}}</p>
-          <p><span>Place:</span> {{event.place}}</p>
-          <p><span>People joined:</span> {{event.usersJoined ? event.usersJoined.length : 0}}</p>
-          <p><span>Description:</span> {{ event.description }}</p>
-        </div>
+      @if (userId) {
         @if (userId === event.ownerId) {
           <div class="single-event-btn">
-            <button class="event-edit-btn">Edit</button>
-            <button class="event-delete-btn">Delete</button>
+            <button class="event-edit-btn" (click)="onEditEvent()">Edit</button>
+            <button class="event-delete-btn" (click)="onDeletePopUp()">
+              Delete
+            </button>
           </div>
-        } @else {
+          } @else {
           <div class="single-event-btn">
             @if (hasJoined) {
-              <button class="event-join-btn" (click)="onCancelEvent()">Cancel</button>
+            <button class="event-join-btn" (click)="onCancelEvent()">Cancel</button>
             } @else {
-              <button class="event-join-btn" (click)="onJoinEvent()">Join</button>
+            <button class="event-join-btn" (click)="onJoinEvent()">Join</button>
             }
           </div>
-        }
-        
-      </section>
+          }
+      } @else {
+        <div class="single-event-btn">
+          <button class="event-join-btn" routerLink="/login">Login</button>
+        </div>
+      }
+    </section>
+  </div>
+
+  @if (isDeleteBtnClicked) {
+  <div class="delete-event-pop-up">
+    <div class="delete-event-wrapper">
+      <div class="delete-event-heading">
+        <h3>Are you sure you want to delete "{{ event.name }}" event?</h3>
+      </div>
+      <div class="delete-event-btns">
+        <button class="event-edit-btn" (click)="onDeleteCancelPopUp()">Cancel</button>
+        <button class="event-delete-btn" (click)="onDeleteEvent()">Delete</button>
+      </div>
     </div>
   </div>
-  
+  }
+</div>
