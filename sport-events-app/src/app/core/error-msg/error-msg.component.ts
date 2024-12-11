@@ -10,11 +10,13 @@ import { ErrorMsgService } from './error-msg.service';
 })
 export class ErrorMsgComponent implements OnInit {
   errorMsg = signal('');
+  showError = false;
+
   constructor(private errorMsgService: ErrorMsgService) {}
 
   ngOnInit(): void {
     this.errorMsgService.apiError$.subscribe((err: any) => {
-      this.errorMsg.set(err?.message);
+      this.errorMsg.set(err?.error.message);
     });
   }
 }
