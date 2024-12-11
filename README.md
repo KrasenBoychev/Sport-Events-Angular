@@ -26,6 +26,10 @@ The project uses MongoDB to store the records.
 
   ![Alt text](./images-ReadMe/register-page.png)
 
+   - #### The Single Event Page shows details of the event and link to the Login Page:
+
+  ![Alt text](./images-ReadMe/event-details-login.png)
+
 
 * ### Authenticated users have access to Home, All Events, My Events, Add Event, Edit Event and My Profile pages.
 
@@ -45,6 +49,25 @@ The project uses MongoDB to store the records.
 
   ![Alt text](./images-ReadMe/user-validation.png)
 
+  - #### The Single Event Page shows Edit and Delete buttons to an owner of an event:
+ 
+  ![Alt text](./images-ReadMe/event-details.png)
+
+   - #### The Edit Event Page  shows the event details which are automatically fullfilled in the form . All fields have the needed validation:
+
+  ![Alt text](./images-ReadMe/edit-form.png)
+
+  ![Alt text](./images-ReadMe/edit-validation.png)
+
+   - #### When Delete button clicked a pop up message shows:
+
+  ![Alt text](./images-ReadMe/edit-delete.png)
+
+    - #### The Single Event Page shows Join or Cancel buttons if the user is not the owner of the event and the "People joined" field changes dinamically:
+
+  ![Alt text](./images-ReadMe/event-details-join.png)
+
+  ![Alt text](./images-ReadMe/event-details-cancel.png)
 
 ## Getting Started
 
