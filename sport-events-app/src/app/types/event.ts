@@ -14,3 +14,11 @@ export interface Event {
   updatedAt: string;
   __v: number;
 }
+
+export interface EventDetails {
+  name: string;
+  date: Date | null;
+  time: string;
+  place: string;
+  description: string;
+}
