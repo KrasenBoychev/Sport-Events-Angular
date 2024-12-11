@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -15,6 +15,14 @@ import { DOMAINS } from '../../constants';
 export class LoginComponent {
   domains = DOMAINS;
 
+  get isLoggedIn(): boolean {
+    return this.userService.isLogged;
+  }
+
+  get userId(): string {        
+    return this.userService.user?._id || '';
+  }
+
   constructor(private userService: UserService, private router: Router) {}
 
   login(form: NgForm) {
@@ -26,6 +34,7 @@ export class LoginComponent {
     const { email, password } = form.value;
 
     this.userService.login(email, password).subscribe(() => {
+      localStorage.setItem('user', email);
       this.router.navigate(['/']);
     });
   }
