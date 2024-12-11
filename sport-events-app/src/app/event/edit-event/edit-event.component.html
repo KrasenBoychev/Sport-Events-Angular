@@ -1,23 +1,21 @@
 <div class="edit-event-container">
-    <form class="edit-event-form" #form="ngForm" (ngSubmit)="editEvent(form)">
-      <h2>Edit Event</h2>
+    <form class="edit-event-form" [formGroup]="form" (ngSubmit)="editEvent()">
+      <h2>Edit Event: {{message?.name}}</h2>
   
       <section class="edit-event-sections">
         <p class="edit-event-label-input">
           <label for="name">Name:</label>
           <input
             [class]="
-              (inputName?.touched && inputName?.errors?.['required']) ? 'input-error': ''"
+              (form.get('name')?.touched && form.get('name')?.errors?.['required']) ? 'input-error': ''"
             type="text"
             name="name"
             id="name"
-            ngModel
-            #inputName="ngModel"
-            required
+            formControlName="name"
           />
         </p>
   
-        @if(inputName?.touched){ @if(inputName?.errors?.['required']){
+        @if(form.get('name')?.touched){ @if(form.get('name')?.errors?.['required']){
         <div>
           <p class="input-error-msg">Name is required!</p>
         </div>
@@ -29,18 +27,16 @@
             <label for="date">Date:</label>
             <input
               [class]="
-                (inputDate?.touched && inputDate?.errors?.['required']) ? 'input-error': ''"
+                (form.get('date')?.touched && form.get('date')?.errors?.['required']) ? 'input-error': ''"
               type="date"
               name="date"
               id="date"
-              ngModel
-              #inputDate="ngModel"
-              required
-              [min]="minDate"
+              [min]="today"
+              formControlName="date"
             />
           </p>
     
-          @if(inputDate?.touched){ @if(inputDate?.errors?.['required']){
+          @if(form.get('date')?.touched){ @if(form.get('date')?.errors?.['required']){
           <div>
             <p class="input-error-msg">Date is required!</p>
           </div>
@@ -52,17 +48,15 @@
             <label for="time">Time:</label>
             <input
               [class]="
-                (inputTime?.touched && inputTime?.errors?.['required']) ? 'input-error': ''"
+                (form.get('time')?.touched && form.get('time')?.errors?.['required']) ? 'input-error': ''"
               type="time"
               name="time"
               id="time"
-              ngModel
-              #inputTime="ngModel"
-              required
+              formControlName="time"
             />
           </p>
     
-          @if(inputTime?.touched){ @if(inputTime?.errors?.['required']){
+          @if(form.get('time')?.touched){ @if(form.get('time')?.errors?.['required']){
           <div>
             <p class="input-error-msg">Time is required!</p>
           </div>
@@ -74,17 +68,15 @@
             <label for="place">Place:</label>
             <input
               [class]="
-                (inputPlace?.touched && inputPlace?.errors?.['required']) ? 'input-error': ''"
+                (form.get('place')?.touched && form.get('place')?.errors?.['required']) ? 'input-error': ''"
               type="text"
               name="place"
               id="place"
-              ngModel
-              #inputPlace="ngModel"
-              required
+              formControlName="place"
             />
           </p>
     
-          @if(inputPlace?.touched){ @if(inputPlace?.errors?.['required']){
+          @if(form.get('place')?.touched){ @if(form.get('place')?.errors?.['required']){
           <div>
             <p class="input-error-msg">Place is required!</p>
           </div>
@@ -96,25 +88,23 @@
             <label for="description">Description:</label>
             <input
               [class]="
-                (inputDescription?.touched && inputDescription?.errors?.['required']) ? 'input-error': ''"
+                (form.get('description')?.touched && form.get('description')?.errors?.['required']) ? 'input-error': ''"
               type="textarea"
               name="description"
               id="description"
               placeholder="maximum 50 symbols"
-              ngModel
-              #inputDescription="ngModel"
-              required
               maxlength="50"
+              formControlName="description"
             />
           </p>
     
-          @if(inputDescription?.touched){ @if(inputDescription?.errors?.['required']){
+          @if(form.get('description')?.touched){ @if(form.get('description')?.errors?.['required']){
           <div>
             <p class="input-error-msg">Description is required!</p>
           </div>
           } 
           
-          @if(inputDescription?.errors?.['maxlength']){
+          @if(form.get('description')?.errors?.['maxlength']){
             <div>
               <p class="input-error-msg">Description should be maximum 50 symbols!</p>
             </div>
@@ -122,16 +112,24 @@
         }
         </section>
   
-      <button
-        [disabled]="form.invalid"
-        [class]="
-          form.invalid
-            ? 'edit-event-disabled-btn'
-            : 'edit-event-enabled-btn'
-        "
-      >
-        Create
-      </button>
+        <div class="edit-event-btn-wrapper">
+          <button
+            class="edit-event-button red-button"
+            (click)="onCancelEditEvent($event)"
+          >
+            Cancel
+          </button>
+          <button
+            [disabled]="form.invalid"
+            [class]="
+              form.invalid
+                ? 'edit-event-button grey-disabled-button'
+                : 'edit-event-button green-enabled-button'
+            "
+          >
+            Save
+          </button>
+        </div>
     </form>
   </div>
   
