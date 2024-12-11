@@ -35,14 +35,6 @@
   gap: 10px;
 }
 
-.profile-edit-button {
-  background-color: #22371d;
-}
-
-.profile-edit-button:hover {
-  background-color: #FFF;
-}
-
 .profile-form-info {
   justify-content: space-between;
 }
@@ -56,33 +48,4 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.profile-btn-wrapper {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-.red-button {
-  background-color: red;
-}
-
-.grey-disabled-button {
-  background-color: grey;
-}
-
-.grey-disabled-button:hover {
-  cursor: auto;
-  color: #FFF;
-  background-color: grey;
-}
-
-.green-enabled-button {
-  background-color: greenyellow;
-}
-
-
-.green-enabled-button:hover {
-  cursor: pointer;
 }
