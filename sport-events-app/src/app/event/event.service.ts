@@ -1,20 +1,19 @@
 import { Event } from '../types/event';
-
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class EventService {
 
-  private messageSource = new BehaviorSubject<Event | null>(null);
-  currentMessage = this.messageSource.asObservable();
+  private eventSource = new BehaviorSubject<Event | null>(null);
+  currentEvent = this.eventSource.asObservable();
 
   constructor() { }
 
-  changeMessage(message: Event) {
-    this.messageSource.next(message);
+  changeEvent(event: Event) {
+    this.eventSource.next(event);
   }
 }
 
