@@ -9,7 +9,7 @@ import { ErrorMsgComponent } from './core/error-msg/error-msg.component';
 import { AllEventsComponent } from './event/all-events/all-events.component';
 import { AddEventComponent } from './event/add-event/add-event.component';
 import { SingleEventComponent } from './event/single-event/single-event.component';
-import { allEventsResolver, singleEventResolver, userEventsResolver } from './guards/event-resolvers.guard';
+import { allEventsResolver, editEventResolver, singleEventResolver, userEventsResolver } from './guards/event-resolvers.guard';
 import { EditEventComponent } from './event/edit-event/edit-event.component';
 import { UserEventsComponent } from './event/user-events/user-events.component';
 
@@ -43,7 +43,7 @@ export const routes: Routes = [
     ],
   },
   { path: 'add-event', component: AddEventComponent, canActivate: [AuthGuard] },
-  { path: 'edit-event/:eventId', component: EditEventComponent, canActivate: [AuthGuard] },
+  { path: 'edit-event/:eventId', component: EditEventComponent, resolve: { currEvent: editEventResolver }, canActivate: [AuthGuard] },
   { path: 'error', component: ErrorMsgComponent },
   { path: '404', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/404' },
