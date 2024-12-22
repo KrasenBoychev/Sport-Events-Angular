@@ -34,7 +34,7 @@ export class LoginComponent {
     const { email, password } = form.value;
 
     this.userService.login(email, password).subscribe(() => {
-      localStorage.setItem('user', email);
+      localStorage.setItem('user', JSON.stringify({email, username: this.userService.user?.username}));
       this.router.navigate(['/']);
     });
   }
