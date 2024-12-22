@@ -9,6 +9,7 @@ import { emailValidator } from '../../utils/email.validator';
 import { DOMAINS } from '../../constants';
 import { ProfileDetails } from '../../types/user';
 import { UserService } from '../user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -33,15 +34,22 @@ export class ProfileComponent implements OnInit {
     email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
   });
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const { username, email } = this.userService.user!;
-    this.profileDetails = { username, email };
+    if (this.userService.user) {
+      const { username, email } = this.userService.user!;
+      this.profileDetails = { username, email };
+
+    } else {
+      const userDetails = JSON.parse(localStorage.getItem('user')!);
+      this.profileDetails = { username: userDetails.username, email: userDetails.email }
+    }
+
 
     this.form.setValue({
-      username,
-      email
+      username: this.profileDetails.username,
+      email: this.profileDetails.email
     });
   }
 
@@ -59,6 +67,7 @@ export class ProfileComponent implements OnInit {
     const { username, email } = this.profileDetails;
 
     this.userService.updateProfile(username, email).subscribe(() => {
+      localStorage.setItem('user', JSON.stringify({ email, username }))
       this.toggleEditMode();
     });
   }
