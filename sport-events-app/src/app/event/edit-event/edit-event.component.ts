@@ -9,7 +9,6 @@ import {
 } from '@angular/forms';
 import { EventDetails, Event as EventType } from '../../types/event';
 import moment from 'moment';
-import { DataService } from '../event.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-edit-event',
@@ -19,6 +18,10 @@ import { Subscription } from 'rxjs';
   styleUrl: './edit-event.component.css'
 })
 export class EditEventComponent implements OnInit, OnDestroy {
+  event: EventType | null = null;
+  subscription: Subscription | null = null;
+  resolverData: { currEvent: EventType, subscription: Subscription } | null = null;
+
   eventDetails: EventDetails = {
     name: '',
     date: null,
@@ -49,40 +52,42 @@ export class EditEventComponent implements OnInit, OnDestroy {
     return moment().add(1, 'day').format('YYYY-MM-DD');
   }
 
-  message: EventType | null = null;
-  subscription: Subscription | null = null;
-
   constructor(
     private apiService: ApiService,
     private router: Router,
     private route: ActivatedRoute,
-    private data: DataService
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.data.currentMessage.subscribe(message => this.message = message);
+    this.resolverData = this.route.snapshot.data['currEvent'];
 
-    const formatDate = moment(this.message!.date).format('YYYY-MM-DD');
+    if (this.resolverData?.currEvent) {
+      this.event = this.resolverData.currEvent;
+      this.subscription = this.resolverData.subscription;
 
-    this.eventDetails = {
-      name: this.message!.name,
-      date: this.message!.date,
-      time: this.message!.time,
-      place: this.message!.place,
-      description: this.message!.description,
-    };
+      const formatDate = moment(this.event!.date).format('YYYY-MM-DD');
 
-    this.form.setValue({
-      name: this.message!.name,
-      date: formatDate,
-      time: this.message!.time,
-      place: this.message!.place,
-      description: this.message!.description,
-    });
+      this.eventDetails = {
+        name: this.event!.name,
+        date: this.event!.date,
+        time: this.event!.time,
+        place: this.event!.place,
+        description: this.event!.description,
+      };
+
+      this.form.setValue({
+        name: this.event!.name,
+        date: formatDate,
+        time: this.event!.time,
+        place: this.event!.place,
+        description: this.event!.description,
+      });
+    }
   }
 
   ngOnDestroy() {
     this.subscription!.unsubscribe();
+    localStorage.removeItem('eventDetails');
   }
 
   editEvent() {
@@ -94,9 +99,8 @@ export class EditEventComponent implements OnInit, OnDestroy {
 
     let eventId = this.route.snapshot.params['eventId'];
 
-    this.apiService.updateEvent(this.message!._id, name!, date!, time!, place!, description!).subscribe(() => {
+    this.apiService.updateEvent(this.event!._id, name!, date!, time!, place!, description!).subscribe(() => {
       this.router.navigate([`/all-events/${eventId}`]);
-
     });
   }
 
