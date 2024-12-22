@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { LoaderComponent } from '../../shared/loader/loader.component';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Event } from '../../types/event';
+import { createSignal } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-all-events',
