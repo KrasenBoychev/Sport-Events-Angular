@@ -1,11 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user.service';
 import { Event } from '../../types/event';
 import { DatePipe } from '@angular/common';
-import { DataService } from '../event.service';
-import { Subscription } from 'rxjs';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-single-event',
@@ -14,7 +13,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './single-event.component.html',
   styleUrl: './single-event.component.css'
 })
-export class SingleEventComponent implements OnInit, OnDestroy {
+export class SingleEventComponent implements OnInit {
   event = {} as Event;
   hasJoined: boolean | null = null;
   eventPeopleJoined: number | null = null;
@@ -24,14 +23,11 @@ export class SingleEventComponent implements OnInit, OnDestroy {
     return this.userService.user?._id || '';
   }
 
-  message: Event | null = null;
-  subscription: Subscription | null = null;
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private data: DataService,
+    private eventService: EventService,
     private apiService: ApiService,
   ) { }
 
@@ -45,12 +41,6 @@ export class SingleEventComponent implements OnInit, OnDestroy {
     }
 
     this.eventPeopleJoined = this.event.usersJoined.length;
-
-    this.subscription = this.data.currentMessage.subscribe(message => this.message = message);
-  }
-
-  ngOnDestroy() {
-    this.subscription!.unsubscribe();
   }
 
   onJoinEvent() {
@@ -68,7 +58,8 @@ export class SingleEventComponent implements OnInit, OnDestroy {
   }
 
   onEditEvent() {
-    this.data.changeMessage(this.event);
+    this.eventService.changeEvent(this.event);
+    localStorage.setItem('eventDetails', JSON.stringify(this.event));
     this.router.navigate([`/edit-event/${this.event._id}`]);
   }
 
