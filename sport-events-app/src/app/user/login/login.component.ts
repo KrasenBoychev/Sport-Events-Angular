@@ -19,11 +19,11 @@ export class LoginComponent {
     return this.userService.isLogged;
   }
 
-  get userId(): string {        
+  get userId(): string {
     return this.userService.user?._id || '';
   }
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) { }
 
   login(form: NgForm) {
     if (form.invalid) {
@@ -34,7 +34,7 @@ export class LoginComponent {
     const { email, password } = form.value;
 
     this.userService.login(email, password).subscribe(() => {
-      localStorage.setItem('user', JSON.stringify({email, username: this.userService.user?.username}));
+      localStorage.setItem('user', JSON.stringify({ userId: this.userService.user?._id, email, username: this.userService.user?.username }));
       this.router.navigate(['/']);
     });
   }
