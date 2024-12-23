@@ -22,7 +22,8 @@ app-edit-event,
 app-login,
 app-register,
 app-profile,
-app-page-not-found {
+app-page-not-found,
+app-loader {
   flex-grow: 1;
   min-height: 100%;
 }
