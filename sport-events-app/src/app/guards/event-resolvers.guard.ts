@@ -16,6 +16,10 @@ export const userEventsResolver: ResolveFn<Event[]> = (route) => {
     const userService = inject(UserService);
     let userId;
     userService.user$.subscribe(user => userId = user?._id);
+
+    if (!userId) {
+        userId = JSON.parse(localStorage.getItem('user')!).userId;
+    }
     return apiService.getUserEvents(userId);
 };
 
