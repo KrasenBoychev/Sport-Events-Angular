@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { LoaderComponent } from '../../shared/loader/loader.component';
 import { Event } from '../../types/event';
 
 @Component({
   selector: 'app-user-events',
   standalone: true,
-  imports: [LoaderComponent, RouterLink],
+  imports: [RouterLink],
   templateUrl: './user-events.component.html',
   styleUrl: '../all-events/all-events.component.css'
 })
