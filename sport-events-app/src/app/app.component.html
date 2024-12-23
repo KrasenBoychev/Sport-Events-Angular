@@ -3,7 +3,12 @@
     <app-header />
 
     <main>
+      @if (loading) {
+      <app-loader />
+      } @else {
       <router-outlet />
+      } 
+      
       @if (error) {
       <app-error-msg />
       }
