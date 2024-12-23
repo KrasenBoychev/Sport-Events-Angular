@@ -39,7 +39,7 @@ export class RegisterComponent {
     ),
   });
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) { }
 
   isFieldTextMissing(controlName: string) {
     return (
@@ -80,7 +80,7 @@ export class RegisterComponent {
     this.userService
       .register(username!, email!, password!, rePassword!)
       .subscribe(() => {
-        localStorage.setItem('user', JSON.stringify({email, username: this.userService.user?.username}));
+        localStorage.setItem('user', JSON.stringify({ userId: this.userService.user?._id, email, username: this.userService.user?.username }));
         this.router.navigate(['/']);
       });
   }
